@@ -5,16 +5,16 @@ import Link from "next/link";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(["slug", "title", "date", "tags"]);
+  const posts = getAllPosts(["slug", "title", "date", "tags"]);
 
   return {
-    props: { allPosts },
+    props: { posts },
   };
 };
 
-const Home: NextPage<Props> = ({ allPosts }) => (
+const Home: NextPage<Props> = ({ posts }) => (
   <ul>
-    {allPosts?.map((post) => (
+    {posts?.map((post) => (
       <div key={post.slug}>
         <li>
           <Link href={`/posts/${post.slug}`}>
